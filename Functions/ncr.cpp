@@ -1,29 +1,31 @@
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
-int factorial(int x);
-
-int factorial(int x){
-    int factorial = 1 ;
-
-    for(int i = 1 ; i <= x ; i++){
-        factorial = factorial * i ;
+int solve(int n, int r) {
+    // Your code here    
+    int facN = 1;
+    int facR = 1;
+    int solve;
+    
+    for ( int i = 1 ; i <= n ; i++ ){
+        facN = facN * i;
+    }
+    
+    for ( int i = 1 ; i <= r ; i++ ){
+        facR = facR * i;
     }
 
-    return factorial;
+    solve = (facN / (facN - facR)) ;
+    
+    return solve ;
 }
 
-int main(){
-    int n,r ;
-
-    cout << "Enter the value of n and r : " ;
-    cin >> n >> r ;
-
-    int ncr ;
-
-    ncr = factorial(n) / (factorial(r) * factorial(n-r));
-    
-    cout << "The ncr is : " << ncr << "\n" ;
-
-    return 0;
+int main() {
+    int n;
+    int b;
+    cin >> n;
+    cin >> b;
+    int res = solve(n, b);
+    cout << res << endl;
 }
