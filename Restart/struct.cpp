@@ -10,7 +10,8 @@ struct student
     float CGPA;
 };
 
-int main(){
+int main(){ 
+
     struct student one ;
     one.Name = "Ankit" ;
     one.RollNumber = 001;
