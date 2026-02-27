@@ -1,13 +1,7 @@
-#include <iostream>
-using namespace std;
 
 int main(){
-    int n;
-    int original;
-    int rev = 0;
-    int rem;
+    if(checkPrime(8)) cout << "true";
+    else cout << "false";
 
-    cout << "Enter the number : " ;
-    cin >> n ;
-
-    original = n ;
+    return 0;
+}
