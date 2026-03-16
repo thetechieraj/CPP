@@ -32,5 +32,7 @@ int singleElement(vector<int> one){
 int main(){
     vector<int> one = {1,1,2,2,3,3,5,5,6,8,8,9,9};
 
-    cout << singleElement(one) << "\n";
+    cout << "The single element is : " << singleElement(one) << "\n";
+
+    return 0;
 }
