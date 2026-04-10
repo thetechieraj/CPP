@@ -1,6 +1,13 @@
 #include<iostream>
+#include<unordered_map>
+
 using namespace std;
 
 int main(){
-    return 0;
+        unordered_map <string,int> m;
+        
+        
+
+        
+    return 0; 
 }
