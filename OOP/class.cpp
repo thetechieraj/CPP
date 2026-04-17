@@ -8,6 +8,10 @@ class car{
     vector<string> model_Color_varient;
 
     //Member Functions
+
+
+    manufacturingYear = 2022;
+    
     
 };
 
