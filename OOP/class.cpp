@@ -11,7 +11,7 @@ class car{
 
 
     manufacturingYear = 2022;
-    
+    name = Benz;
     
 };
 
