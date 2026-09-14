@@ -1,21 +1,30 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 class car{
+    public:
+
     // Data members (Attributes)
     string name;
     int manufacturingYear;
-    vector<string> model_Color_varient;
+    string color;
 
     //Member Functions
+    void display(){
+        cout << name << "\n" << manufacturingYear << "\n" << color;
+    }
 
-
-    manufacturingYear = 2022;
-    name = Benz;
-    
 };
 
 int main(){
+    car mg;
+    mg.name = "hector";
+    mg.manufacturingYear = 2024;
+    mg.color = "black";
+
+    mg.display();
 
     return 0;
 }
