@@ -70,7 +70,12 @@ public:
             return;
         }
 
+        Node* toBeRemoved = head->next;
+
         head = head->next;
+
+        delete toBeRemoved;
+
         length--;
     }
 
@@ -91,6 +96,49 @@ public:
         temp->next = n;
 
         length++;
+    }
+
+    int get(int index){
+        if(index < 0 || index >= length){
+            cout << "INVALID INDEX!";
+            return 0;
+        }        
+
+        Node* temp = head;
+
+        for(int i = 1; i <= index; i++){
+            temp = temp->next;
+        }
+
+        return temp->val;
+    }
+
+    void remove(int index){
+        if(index < 0 || index >= length){
+            cout << "INVALID INDEX!";
+            return;
+        }        
+
+        if(index == 0){
+            removeAtHead();
+            return;
+        }
+
+        Node* temp = head;
+
+        for(int i = 0; i < index-1; i++){
+            temp = temp->next;
+        }
+
+        Node* toBeRemoved = temp->next;
+
+        temp->next = temp->next->next;
+        
+        if(index == length-1) tail = temp; // Important to update tail if we are removing the last element
+
+        delete toBeRemoved;
+
+        length--;
     }
 };
 
@@ -118,6 +166,12 @@ int main(){
     one.insert(1,10);
 
     one.print();
+
+    one.remove(4);
+
+    one.print();
+
+    cout << one.get(3) << "\n";
 
     return 0;
 }
