@@ -22,25 +22,24 @@ class Student : public Person{       // Inheritance     // Single Inheritance
     int rollNo;
 
     void details(){
-        cout << name << "\n";
-        cout << age << "\n";
-        cout << gender << "\n";
-        cout << rollNo << "\n";
+        cout << name << " " << age << " " << gender << " " << rollNo << "\n";
     }
     
 };
 
-class Employee : public Student{      // Multilevel Inheritance
+class GraduateStudent : public Student{      // Multilevel Inheritance
     public:
-    int id;
+    string branch;
 
     void getInfo(){
-        cout << name << "\n";
-        cout << age << "\n";
-        cout << gender << "\n";
-        cout << rollNo << "\n";
-        cout << id << "\n";
+        cout << name << " " << age << " " << gender << " " << rollNo << " " << branch << "\n" ;
     }
+
+};
+
+class PHDStudent : public Person, public GraduateStudent{
+    public:
+    int year;
 
 };
 
@@ -54,13 +53,15 @@ int main(){
     s1.name = "Raj";
     s1.age = 22;
     s1.gender = "MALE";
-    s1.rollNo = 50052;
+    s1.rollNo = 052;
 
     Student s2;
     s2.name = "Ankit";
     s2.age = 21;
     s2.gender = "MALE";
-    s2.rollNo = 50004;
+    s2.rollNo = 004;
+
+    cout << "The details of Students s1:" << "\n";
 
     s1.details();
 
@@ -68,14 +69,19 @@ int main(){
 
     cout << s2.age << "\n";
 
-    Employee e1;
-    e1.name = "Ajay";
-    e1.age = 24;
-    e1.gender = "Male";
-    e1.rollNo = 50006;
-    e1.id = 001;
+    cout << "The details of graduateStudent g1:" << "\n";
 
-    e1.getInfo();
+    GraduateStudent g1;
+    g1.name = "Ajay";
+    g1.age = 24;
+    g1.gender = "Male";
+    g1.rollNo = 002;
+    g1.branch = "CSE";
+
+    g1.getInfo();
+
+    PHDStudent p1;
+    p1.
 
     return 0;
 }
