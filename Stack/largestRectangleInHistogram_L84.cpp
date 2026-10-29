@@ -1,54 +1,57 @@
-class Solution {
-public:
-    int largestRectangleArea(vector<int>& heights) {
-        int n = heights.size();
-        stack<int> st;
+#include<iostream>
+#include<vector>
+#include<stack>
+#include<algorithm>
 
-        // Next Smaller Element (index)
-        vector<int> nsi(n, n);
+using namespace std;
 
-        for(int i = n - 1; i >= 0; i--) {
-            while(!st.empty() && heights[st.top()] >= heights[i]) {
-                st.pop();
-            }
+int maxRectangleArea(vector<int>& heights){
+    int n = heights.size();
+    stack<int> st;
 
-            if(!st.empty()) {
-                nsi[i] = st.top();
-            }
+    // Next Smallest Element
 
-            st.push(i);
-        }
+    vector<int> nse(n, n);
 
-        while(!st.empty()) {
+    for(int i = n-1; i >= 0; i--){
+        while(!st.empty() && heights[st.top()] >= heights[i])
             st.pop();
-        }
 
-        // Previous Smaller Element (index)
-        vector<int> psi(n, -1);
+        if(!st.empty()) nse[i] = st.top();
 
-        for(int i = 0; i < n; i++) {
-            while(!st.empty() && heights[st.top()] >= heights[i]) {
-                st.pop();
-            }
-
-            if(!st.empty()) {
-                psi[i] = st.top();
-            }
-
-            st.push(i);
-        }
-
-        // Calculate maximum area
-        int maxArea = 0;
-
-        for(int i = 0; i < n; i++) {
-            int height = heights[i];
-            int width = nsi[i] - psi[i] - 1;
-            int area = height * width;
-
-            maxArea = max(maxArea, area);
-        }
-
-        return maxArea;
+        st.push(i);
     }
-};
+
+    while(!st.empty())
+        st.pop();
+
+    // Previous Smallest Element
+
+    vector<int> pse(n, -1);
+    int maxArea = 0;
+
+    for(int i = 0; i < n; i++){
+        while(!st.empty() && heights[st.top()] >= heights[i])
+            st.pop();
+
+        if(!st.empty()) pse[i] = st.top();
+
+        st.push(i);
+
+        int height = heights[i];
+        int width = nse[i] - pse[i] -1;
+        int area = height * width;
+
+        maxArea = max(maxArea, area);
+    }
+
+    return maxArea;
+}
+
+int main(){
+    vector<int> nums = {5,2,4,8,7,5,3,1,7};
+
+    cout << "The area is: " << maxRectangleArea(nums);
+
+    return 0;
+}
