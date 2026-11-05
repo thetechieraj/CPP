@@ -1,4 +1,6 @@
 #include<iostream>
+#include<climits>
+
 using namespace std;
 
 class Node{
@@ -57,6 +59,12 @@ int minInTree(Node* root){
     return min(root->val, min(minLeft, minRight));
 }
 
+int levels(Node* root){
+    if(root == nullptr) return 0;
+
+    return 1 + max(levels(root->left), levels(root->right));
+}
+
 int main(){
     Node* a = new Node(10);
     Node* b = new Node(20);
@@ -79,23 +87,17 @@ int main(){
 
     cout << "\n";
 
-    cout << size(a);
+    cout << size(a) << "\n";
 
-    cout << "\n";
+    cout << sum(a) << "\n";
 
-    cout << sum(a);
+    cout << product(a) << "\n";
 
-    cout << "\n";
+    cout << maxInTree(a) << "\n";
 
-    cout << product(a);
+    cout << minInTree(a) << "\n";
 
-    cout << "\n";
-
-    cout << maxInTree(a);
-
-    cout << "\n";
-
-    cout << minInTree(a);
+    cout << levels(a) << "\n";
 
     return 0;
 }
